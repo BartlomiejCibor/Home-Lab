@@ -75,3 +75,25 @@ Configuration of an external arbiter (QDevice) for a two-node cluster to secure 
 ![HomeLab Configuration](pvecm_status.png)
 
 5. High Availability Testing and Storage Limitations: Testing the HA functionality revealed an underlying storage design issue. Proxmox HA relies heavily on the ZFS file system (for replication), whereas the nodes were formatted using standard ext4/LVM. The resolution requires either wiping and reformatting the nodes to ZFS (and restoring virtual machines from backups) or adding dedicated storage drives. Due to physical hardware constraints in the current infrastructure, adding new drives is not an option, making the wipe-and-restore method the required path forward.
+
+
+UPDATE 10.08.2026r
+
+Update Opnsene from 26.1.11_10 to 26.7.1_1
+
+UPDATE 13.08.2026r
+
+Fixing Prometheus connection issue: the system reported a 'timeout / context deadline exceeded' error, and Grafana was unable to fetch metrics.![HomeLab Configuration](prometheus_error.png). I resolved the problem by fixing an earlier mistake I made during a custom macOS setup (using an automated CLI installation script). During the installation on the Dell Node, I selected and modified a virtual bridge (vmbr1), which ultimately caused an IP address conflict.
+
+UPDATE 15.08.2026r
+
+ Adding Autonomous Infrastructure Agent for Homelab Monitoring & Management - Hermes-agent:![HomeLab Configuration](hermes-agent.png)
+                                                                                                                                         
+    - Deployed a custom AI agent powered by the Google AI Studio API on a dedicated Debian node within my homelab environment.                 
+                                                                                                                                              
+    -  Architecture & Connectivity:* Integrated the agent with a Telegram gateway, enabling secure, real-time chat interactions with my        
+    infrastructure directly from mobile devices.                                                                                               
+    -  Contextual Awareness:* The agent dynamically builds and maintains cluster topology awareness, interfacing directly with Proxmox nodes   
+    and virtual machines.                                                                                                                      
+    -  Automated Ops & Monitoring:* Configured scheduled cron jobs for daily cluster health checks—monitoring CPU, RAM, disk utilization,      
+    and S.M.A.R.T. metrics—with automated status alerts delivered straight to my chat. 
