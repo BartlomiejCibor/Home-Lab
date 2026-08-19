@@ -6,7 +6,7 @@ Welcome to my home lab repository. This project documents my hardware infrastruc
 
 | Device | Model | CPU | RAM | Storage |
 | :--- | :--- | :--- | :--- | :--- |
-| **Node 1** | Lenovo ThinkCentre M73 | Intel Core i3-4130T (2 Cores @ 2.9GHz) | 8GB DDR3| 120GB SSD |
+| **Node 1** | Lenovo ThinkCentre M73 | Intel Core i3-4130T (2 Cores @ 2.9GHz) | 16GB DDR3| 120GB SSD |
 | **Node 2** | Dell OptiPlex 5050 | Intel Core i5-6500 (4 Cores @ 3.2GHz) | 16GB DDR4 | 256GB SSD + 2TB HDD |
 | **Network**| TP-Link TL-SG108E (Smart Managed) | - | - | - |
 
@@ -16,15 +16,20 @@ Welcome to my home lab repository. This project documents my hardware infrastruc
 | ID | Name | Type | OS | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **100** | OPNsense-Router | VM | FreeBSD | Firewall |
+| **107** | Win10 | VM | Windows 10 | guest system |
+| **110** | alpine-test | VM | Linux | lightweight linux system test |
 
 ### Node 2: Serwer
 | ID | Service/Name | Type | OS | Note |
 | :--- | :--- | :--- | :--- | :--- |
+| **101** | homepage | LXC | Host | Cluster information monitoring |
 | **104** | alpine-prometheus | LXC | Host | Monitoring Database (Community Script) |
 | **106** | alpine-grafana | LXC | Host | Monitoring Visualization (Community Script) |
 | **102** | AD-Master | VM | Windows Server 2022 | Windows Active Directory |
 | **103** | Win10 | VM | Windows 10 | guest system |
+| **105** | Win98 | VM | Windows 98 | retro system |
 | **108** | Debian | VM | Linux(Debian) | Torrents |
+| **109** | Debian | VM | Hermes-ai-agent | My ai agent environment |
 
 
 ![HomeLab Configuration](proxmox_screenshot.png)
@@ -97,3 +102,7 @@ UPDATE 15.08.2026r
     and virtual machines.                                                                                                                      
     -  Automated Ops & Monitoring:* Configured scheduled cron jobs for daily cluster health checks—monitoring CPU, RAM, disk utilization,      
     and S.M.A.R.T. metrics—with automated status alerts delivered straight to my chat. 
+
+    UPDATE 19.08.2026r
+
+    Adding a RAM module to ThinkCentre M73 for improved performance and memory buffer.
