@@ -67,14 +67,14 @@ The network operates on a **Router-on-a-Stick** topology with a virtualized **OP
 ### Node 2: Serwer
 | ID | Service/Name | Type | OS | Note |
 | :--- | :--- | :--- | :--- | :--- |
-| **101** | homepage | LXC | Host | Cluster information monitoring |
-| **104** | alpine-prometheus | LXC | Host | Monitoring Database (Community Script) |
-| **106** | alpine-grafana | LXC | Host | Monitoring Visualization (Community Script) |
+| **101** | homepage | LXC | Alpine Linux | Cluster information monitoring |
+| **104** | alpine-prometheus | LXC | Alpine Linux | Monitoring Database (Community Script) |
+| **106** | alpine-grafana | LXC | Alpine Linux | Monitoring Visualization (Community Script) |
 | **102** | AD-Master | VM | Windows Server 2022 | Windows Active Directory |
 | **103** | Win10 | VM | Windows 10 | guest system |
 | **105** | Win98 | VM | Windows 98 | retro system |
-| **108** | Debian | VM | Linux(Debian) | Torrents |
-| **109** | Debian | VM | Hermes-ai-agent | My ai agent environment |
+| **108** | Debian | VM | Debian 12 | Media Server |
+| **109** | Hermes-ai-agent | VM | Debian 12 | My ai agent environment |
 
 
 ![HomeLab Configuration](proxmox_screenshot.png)
