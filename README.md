@@ -1,6 +1,5 @@
 # 🏠 Home-Lab
-
- ⚡ Enterprise-Grade Home Lab & Infrastructure                                                                                              
+ ┊  ⚡ Enterprise-Grade Home Lab & Infrastructure                                                                                              
                                                                                                                                                
     │ Production-grade test environment built from scratch, emulating a corporate network architecture with a strong focus on High             
     Availability, strict network segmentation, and automation.                                                                                 
@@ -9,22 +8,22 @@
                                                                                                                                                
     🚀 High-Level Architecture                                                                                                                 
                                                                                                                                                
-      [ WAN / Internet ]                                                                                                                       
-             │                                                                                                                                 
-      [ OPNsense Router ] ─── VLAN 10 (MGMT)                                                                                                   
-             │             ─── VLAN 20 (LAN)                                                                                                   
-             │             ─── VLAN 30 (Proxmox/Storage)                                                                                       
-             │             ─── VLAN 40 (Active Directory)                                                                                      
-             ▼                                                                                                                                 
-      ┌──────────────────────────────────────────────┐                                                                                         
-      │           Proxmox VE Cluster (HA)            │                                                                                         
-      │  ├── Node 1: Dell (Compute & Core Services)  │                                                                                         
-      │  └── Node 2: Lenovo (Failover & Storage)     │                                                                                         
-      └──────────────────────────────────────────────┘                                                                                         
-             │                                                                                                                                 
-             ├── Arch Linux VMs (Lightweight MATE/LightDM)                                                                                     
-             ├── Windows Server / AD DS                                                                                                        
-             └── Automated Monitoring & Backup Pipelines                                                                                       
+    WAN / Internet                                                                                                                             
+       │                                                                                                                                       
+    OPNsense Router                                                                                                                            
+       ├── VLAN 10 (MGMT)                                                                                                                      
+       ├── VLAN 20 (LAN)                                                                                                                       
+       ├── VLAN 30 (Proxmox / Storage)                                                                                                         
+       └── VLAN 40 (Active Directory)                                                                                                          
+       │                                                                                                                                       
+       ▼                                                                                                                                       
+    Proxmox VE Cluster (HA)                                                                                                                    
+       ├── Node 1: Dell (Compute & Core Services)                                                                                              
+       └── Node 2: Lenovo (Failover & Storage)                                                                                                 
+       │                                                                                                                                       
+       ├── Arch Linux VMs (Lightweight MATE/LightDM)                                                                                           
+       ├── Windows Server / AD DS                                                                                                              
+       └── Automated Monitoring & Backup Pipelines                                                                                             
                                                                                                                                                
     ────────────────────────────────────                                                                                                       
                                                                                                                                                
@@ -45,9 +44,7 @@
     • Multi-Node HA Cluster: Configured Proxmox VE cluster utilizing Corosync quorum mechanics and disaster recovery procedures.               
     • Enterprise Network Segmentation: Strict traffic isolation implemented via dedicated VLANs (Management, LAN, Proxmox/Storage, AD).        
     • Resource Optimization: Lightweight Arch Linux virtual machines configured for specific workloads to eliminate I/O bottlenecks.           
-    • Automation-Driven: Custom scripts and automated pipelines handling VM provisioning, networking rules, and health checks.                 
-                                                                                                                                               
-    ────────────────────────────────────                                                                                                       
+    • Automation-Driven: Custom scripts and automated pipelines handling VM provisioning, networking rules, and health checks.  
 
 ## 🖥️ Hardware Specifications
 
