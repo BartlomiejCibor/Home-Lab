@@ -1,6 +1,47 @@
 # 🏠 Home-Lab
 
-Welcome to my home lab repository. This project documents my hardware infrastructure, configuration files, and performance benchmarks.
+    ⚡ Enterprise-Grade Home Lab & Infrastructure                                                                                              
+                                                                                                                                               
+    │ Production-grade test environment built from scratch, emulating a corporate network architecture with a strong focus on High             
+    Availability, strict network segmentation, and automation.                                                                                 
+                                                                                                                                               
+    ────────────────────────────────────                                                                                                       
+                                                                                                                                               
+    🚀 High-Level Architecture                                                                                                                 
+    [ WAN / Internet ]                                                                                                                         
+           │                                                                                                                                   
+    [ OPNsense Router ] ─── VLAN 10 (MGMT)                                                                                                     
+           │             ─── VLAN 20 (LAN)                                                                                                     
+           │             ─── VLAN 30 (Proxmox/Storage)                                                                                         
+           │             ─── VLAN 40 (Active Directory)                                                                                        
+           ▼                                                                                                                                   
+    ┌──────────────────────────────────────────────┐                                                                                           
+    │           Proxmox VE Cluster (HA)            │                                                                                           
+    │  ├── Node 1: Dell (Compute & Core Services)  │                                                                                           
+    │  └── Node 2: Lenovo (Failover & Storage)     │                                                                                           
+    └──────────────────────────────────────────────┘                                                                                           
+           │                                                                                                                                   
+           ├── Arch Linux VMs (Lightweight MATE/LightDM)                                                                                       
+           ├── Windows Server / AD DS                                                                                                          
+           └── Automated Monitoring & Backup Pipelines                                                                                         
+                                                                                                                                               
+      ---                                                                                                                                      
+      ### 🛠️  Tech Stack & Core Competencies                                                                                                    
+      | Category | Technologies & Tools |                                                                                                      
+      | :--- | :--- |                                                                                                                          
+      | **Hypervisors & Virtualization** | Proxmox VE (Cluster, Corosync, QEMU/KVM, LXC) |                                                     
+      | **Networking & Security** | OPNsense, VLAN Tagging (802.1Q), WireGuard, Firewalls |                                                    
+      | **Operating Systems** | Arch Linux, Debian, Windows Server |                                                                           
+      | **Automation & DevOps** | Bash, Cron Automation, Git / GitHub Workflows |                                                              
+      | **Hardware & Diagnostics** | SMART, Storage Management, Low-level Linux Troubleshooting |                                              
+      ---                                                                                                                                      
+      ### 🔥 Key Engineering Highlights                                                                                                        
+      - **Multi-Node HA Cluster:** Configured Proxmox VE cluster utilizing Corosync quorum mechanics and disaster recovery procedures.         
+      - **Enterprise Network Segmentation:** Strict traffic isolation implemented via dedicated VLANs (Management, LAN, Proxmox/Storage,       
+      AD).                                                                                                                                     
+      - **Resource Optimization:** Lightweight Arch Linux virtual machines configured for specific workloads to eliminate I/O bottlenecks.     
+      - **Automation-Driven:** Custom scripts and automated pipelines handling VM provisioning, networking rules, and health checks.           
+      ---    
 
 ## 🖥️ Hardware Specifications
 
@@ -35,7 +76,7 @@ Welcome to my home lab repository. This project documents my hardware infrastruc
 ![HomeLab Configuration](proxmox_screenshot.png)
 
 UPDATE 14.03.2026r
- -I made major improvement in my homelab security and in infrastructure. Added OPNsense as Vm in my node 2
+ -I made major improvements in my homelab security and infrastructure. Added OPNsense as a VM on my node 2
 
 
  UPDATE 15.03.2026r
@@ -45,7 +86,7 @@ UPDATE 14.03.2026r
  UPDATE 20.05.2026r
  -Environment Reinstallation: Clean installation of the hypervisor (Proxmox VE) on both cluster nodes (Lenovo ThinkCentre M73 and Dell Optiplex 5050).
 
- -Network Services Isolation: Migration of the core virtual machine (OPNsense router) to the dedicated Lenovo M73 node. Separating the base network from resource-intensive VMs protects routing from downtime during the second node's restarts and improves hardware resource allocation.
+ -Network Services Isolation: Migration of the core virtual machine (OPNsense router) to the dedicated Lenovo M73 node. Separating the base network from resource-intensive VMs protects routing from downtime during restarts of the second node and improves hardware resource allocation.
 
  -Active Directory Lab: Deployment of a test environment featuring Windows Server 2022 and Windows 10 for learning Active Directory (new machines assigned to VLAN 40 by default).
 
@@ -55,7 +96,7 @@ UPDATE 14.03.2026r
 
  - RAID 1 (Mirror) Implementation:** Configured a mirrored array using two 1 TB drives to ensure data redundancy. ![HomeLab Configuration](data-storage-mirror.png)
 
- - Storage Optimization (Root FS at 98%):** Storing backups on a small SSD previously led to critical capacity issues on the root partition. To optimize the infrastructure, i add dedicated storage pool was provisioned for backups and `.iso` images, effectively offloading the primary root file system. ![HomeLab Configuration](grafana-dashboard.png)
+ - Storage Optimization (Root FS at 98%):** Storing backups on a small SSD previously led to critical capacity issues on the root partition. To optimize the infrastructure, i added dedicated storage pool that was provisioned for backups and `.iso` images, effectively offloading the primary root file system. ![HomeLab Configuration](grafana-dashboard.png)
 
  UPDATE 16.06.2026r
 
@@ -63,13 +104,13 @@ UPDATE 14.03.2026r
 
   UPDATE 20.06.2026r
 
- -Adding a new dashboard: I decided to go with a lightweight Homepage app to display some basic start screen info for my homelab. For hands-on practice, I worked on access management: creating users, generating tokens, assigning them to groups, and setting up roles and permissions on my proxmox. In the future, I plan to update Homepage to the latest version (v1.13.2) and add some new tabs. ![HomeLab Configuration](homepage.png)
+ -Adding a new dashboard: I decided to go with a lightweight Homepage app to display some basic start screen info for my homelab. For hands-on practice, I worked on access management: creating users, generating tokens, assigning them to groups, and setting up roles and permissions on my Proxmox. In the future, I plan to update Homepage to the latest version (v1.13.2) and add some new tabs. ![HomeLab Configuration](homepage.png)
 
  UPDATE 23.06.2026r
 
 Configuration of an external arbiter (QDevice) for a two-node cluster to secure the quorum and prevent split-brain scenarios. The external voting node is a VPS instance hosted in Oracle Cloud.
 
-1. VPS Configuration: Updating the base system (Oracle-Linux-8.6-aarch64), installing WireGuard, generating cryptographic keys, and configuring the network interface (generated with AI assistance).
+1. VPS Configuration: Updating the base system (Oracle Linux 8.6 aarch64), installing WireGuard, generating cryptographic keys, and configuring the network interface (generated with AI assistance).
 ![HomeLab Configuration](wgshow.png)
 
 2. WireGuard Configuration via OPNsense: Creating an instance, assigning an IP address, and generating a new key pair for authenticating the home router.
@@ -84,25 +125,36 @@ Configuration of an external arbiter (QDevice) for a two-node cluster to secure 
 
 UPDATE 10.08.2026r
 
-Update Opnsene from 26.1.11_10 to 26.7.1_1
+Update OPNsense from 26.1.11_10 to 26.7.1_1
 
 UPDATE 13.08.2026r
 
-Fixing Prometheus connection issue: the system reported a 'timeout / context deadline exceeded' error, and Grafana was unable to fetch metrics.![HomeLab Configuration](prometheus_error.png). I resolved the problem by fixing an earlier mistake I made during a custom macOS setup (using an automated CLI installation script). During the installation on the Dell Node, I selected and modified a virtual bridge (vmbr1), which ultimately caused an IP address conflict.
+Fixing Prometheus connection issue: the system reported a 'timeout/context deadline exceeded' error, and Grafana was unable to fetch metrics.![HomeLab Configuration](prometheus_error.png). I resolved the problem by fixing an earlier mistake I made during a custom macOS setup (using an automated CLI installation script). During the installation on the Dell Node, I selected and modified a virtual bridge (vmbr1), which ultimately caused an IP address conflict.
 
 UPDATE 15.08.2026r
 
  Adding Autonomous Infrastructure Agent for Homelab Monitoring & Management - Hermes-agent:![HomeLab Configuration](hermes-agent.png)
-                                                                                                                                         
-    - Deployed a custom AI agent powered by the Google AI Studio API on a dedicated Debian node within my homelab environment.                 
-                                                                                                                                              
-    -  Architecture & Connectivity:* Integrated the agent with a Telegram gateway, enabling secure, real-time chat interactions with my        
-    infrastructure directly from mobile devices.                                                                                               
-    -  Contextual Awareness:* The agent dynamically builds and maintains cluster topology awareness, interfacing directly with Proxmox nodes   
-    and virtual machines.                                                                                                                      
-    -  Automated Ops & Monitoring:* Configured scheduled cron jobs for daily cluster health checks—monitoring CPU, RAM, disk utilization,      
-    and S.M.A.R.T. metrics—with automated status alerts delivered straight to my chat. 
 
-    UPDATE 19.08.2026r
+ - Deployed a custom AI agent powered by the Google AI Studio API on a dedicated Debian node within my homelab environment.                 
 
-    Adding a RAM module to ThinkCentre M73 for improved performance and memory buffer.
+                                                                                                                        
+-  Architecture & Connectivity:* Integrated the agent with a Telegram gateway, enabling secure, real-time chat interactions with my        
+
+infrastructure directly from mobile devices.                                                                                               
+
+-  Contextual Awareness:* The agent dynamically builds and maintains cluster topology awareness, interfacing directly with Proxmox nodes   
+
+and virtual machines.                                                                                                                      
+
+-  Automated Ops & Monitoring:* Configured scheduled cron jobs for daily cluster health checks—monitoring CPU, RAM, disk utilization,      
+
+and S.M.A.R.T. metrics—with automated status alerts delivered straight to my chat. 
+
+
+
+UPDATE 19.08.2026r
+
+
+
+Adding a RAM module to ThinkCentre M73 for improved performance and memory buffer.
+
