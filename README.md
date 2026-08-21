@@ -1,8 +1,7 @@
-# ⚡ Enterprise-Grade Proxmox HA Homelab & Infrastructure
+# ⚡ Enterprise-Grade Proxmox Homelab & Infrastructure
 
 [![Proxmox VE](https://img.shields.io/badge/Hypervisor-Proxmox_VE_Cluster-E57000?style=for-the-badge&logo=proxmox&logoColor=white)](https://proxmox.com)
 [![OPNsense](https://img.shields.io/badge/Firewall-OPNsense_Router-D94A38?style=for-the-badge&logo=opnsense&logoColor=white)](https://opnsense.org)
-[![WireGuard](https://img.shields.io/badge/VPN-WireGuard_Site--to--Cloud-88171A?style=for-the-badge&logo=wireguard&logoColor=white)](https://wireguard.com)
 [![Monitoring](https://img.shields.io/badge/Observability-Prometheus_%7C_Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)](https://grafana.com)
 [![Active Directory](https://img.shields.io/badge/Identity-Windows_Server_AD_DS-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://microsoft.com)
 
@@ -174,4 +173,10 @@ Configuration of an external arbiter (**QDevice**) for a two-node cluster to sec
 
 * Adding a RAM module to **ThinkCentre M73** for improved performance and memory buffer.
 
+---
+
+### UPDATE 21.08.2026r
+
+* Backup Bandwidth Throttling. Reduced backup bandwidth limit from unlimited to `40 MiB/s`. Nightly backup jobs were generating excessive I/O wait, leading to host instability and subsequent loss of cluster quorum.
+![HomeLab Configuration](io-pressure.png.png)
 ---
