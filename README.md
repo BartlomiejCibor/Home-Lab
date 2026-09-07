@@ -74,7 +74,7 @@ The network operates on a **Router-on-a-Stick** topology with a virtualized **OP
 | **105** | Win98 | VM | Windows 98 | retro system |
 | **108** | Debian | VM | Debian 12 | Media Server |
 | **109** | Hermes-ai-agent | VM | Debian 12 | My ai agent environment |
-
+| **111** | Debian | VM | Debian 12 (bookworm) | samp game server |
 
 ![HomeLab Configuration](proxmox_screenshot.png)
 
@@ -178,5 +178,4 @@ Configuration of an external arbiter (**QDevice**) for a two-node cluster to sec
 ### UPDATE 21.08.2026r
 
 * Backup Bandwidth Throttling. Reduced backup bandwidth limit from unlimited to `40 MiB/s`. Nightly backup jobs were generating excessive I/O wait, leading to host instability and subsequent loss of cluster quorum.
-![HomeLab Configuration](io-pressure.png.png)
 ---
