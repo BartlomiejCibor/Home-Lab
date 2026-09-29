@@ -25,3 +25,4 @@ iface vmbr1 inet manual
 	post-down iptables -t nat -D POSTROUTING -s '10.0.30.21/24' -o vmbr0 -j MASQUERADE
 # Subnet 10.0.30.21/24 using vmbr0 for gateway
 
+ vmbr1 and its NAT rule are remnants of an earlier macOS VM networking experiment. They are not part of the current production network topology.

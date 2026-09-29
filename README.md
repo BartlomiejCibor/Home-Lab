@@ -1,4 +1,4 @@
-# ⚡ Enterprise-Grade Proxmox Homelab & Infrastructure
+# ⚡ Two-Node Proxmox Homelab: Networking, Monitoring & Automation
 
 [![Proxmox VE](https://img.shields.io/badge/Hypervisor-Proxmox_VE_Cluster-E57000?style=for-the-badge&logo=proxmox&logoColor=white)](https://proxmox.com)
 [![OPNsense](https://img.shields.io/badge/Firewall-OPNsense_Router-D94A38?style=for-the-badge&logo=opnsense&logoColor=white)](https://opnsense.org)
@@ -13,7 +13,7 @@
 
 | Capability | Implementation Details |
 | :--- | :--- |
-| **High Availability & Quorum** | 2-Node Proxmox VE physical cluster secured against split-brain via external Oracle Cloud VPS **Corosync QDevice** over WireGuard. |
+| ** Cluster & Quorum** | Two-node Proxmox VE cluster with an external QDevice over WireGuard for quorum arbitration. Automated VM failover is not configured. |
 | **Network Security & Routing** | Virtualized **OPNsense** appliance, Router-on-a-Stick, 802.1Q VLANs (`MGMT`, `LAN`, `Proxmox`, `AD`) and Unbound DNS filtering. |
 | **Identity & Access Management** | **Active Directory Domain Services (AD DS)** lab on Windows Server 2022 + Windows 10 clients with granular GPO policies and DNS. |
 | **Observability & ChatOps** | End-to-end metrics via **Prometheus + Node Exporter + Grafana**, Homepage dashboard with RBAC tokens, and an autonomous AI management agent (`Hermes`) with Telegram alerts. |
@@ -139,8 +139,6 @@ Configuration of an external arbiter (**QDevice**) for a two-node cluster to sec
 4. **Initial Challenges and Troubleshooting:** Attempting to ping the VPS from the local machine resulted in packet loss. Opening the necessary ports via the hosting provider's GUI changed the error to "Destination Host Unreachable" — a step in the right direction. The ultimate fix required editing the WireGuard Peer associated with the VPS in OPNsense: setting the correct endpoint address, port, Allowed IPs, and public key. Once applied, all pings were successful, leaving only the quorum votes to be paired. At this point, the network environment was fully prepared.  
    ![HomeLab Configuration](pvecm_status.png)
 
-5. **High Availability Testing and Storage Limitations:** Testing the HA functionality revealed an underlying storage design issue. Proxmox HA relies heavily on the ZFS file system (for replication), whereas the nodes were formatted using standard ext4/LVM. The resolution requires either wiping and reformatting the nodes to ZFS (and restoring virtual machines from backups) or adding dedicated storage drives. Due to physical hardware constraints in the current infrastructure, adding new drives is not an option, making the wipe-and-restore method the required path forward.
-
 ---
 
 ### UPDATE 10.08.2026r
@@ -186,12 +184,12 @@ Configuration of an external arbiter (**QDevice**) for a two-node cluster to sec
 ---
 ### UPDATE 24.09.2026r
 
-dodanie nowego bota oraz utworzenie nowego profilu w hermesie wraz z nową pamięcią 
+Added a separate bot and created a dedicated Hermes Agent profile with its own memory.
 
 ---
 
 ### UPDATE 29.09.2026r
 
-dołączenie plików konfiguracyjnych, automatyzujących i informujących
+Added configuration examples, an infrastructure reporting script, and supporting documentation to the repository.
 
 ---
