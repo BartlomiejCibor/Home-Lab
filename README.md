@@ -5,7 +5,7 @@
 [![Monitoring](https://img.shields.io/badge/Observability-Prometheus_%7C_Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)](https://grafana.com)
 [![Active Directory](https://img.shields.io/badge/Identity-Windows_Server_AD_DS-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://microsoft.com)
 
-> **Production-grade, highly available hybrid infrastructure** emulating enterprise corporate networks. Designed from scratch with strict L2/L3 security segmentation, hybrid-cloud quorum arbitration, automated telemetry, and custom AI-driven ChatOps.
+> **Two-Node Proxmox Homelab: Networking, Monitoring & Automation.**   Two-node Proxmox VE homelab built to explore network segmentation, virtualization, monitoring, backups, and infrastructure automation. It includes an OPNsense router, Prometheus and Grafana monitoring, and an external QDevice hosted in Oracle Cloud for cluster quorum arbitration over WireGuard. A Telegram-connected AI agent assists with health reporting and operational checks.
 
 ---
 
@@ -51,7 +51,7 @@ The network operates on a **Router-on-a-Stick** topology with a virtualized **OP
 | Device | Model | CPU | RAM | Storage |
 | :--- | :--- | :--- | :--- | :--- |
 | **Node 1** | Lenovo ThinkCentre M73 | Intel Core i3-4130T (2 Cores @ 2.9GHz) | 16GB DDR3| 120GB SSD |
-| **Node 2** | Dell OptiPlex 5050 | Intel Core i5-6500 (4 Cores @ 3.2GHz) | 16GB DDR4 | 256GB SSD + 2TB HDD |
+| **Node 2** | Dell OptiPlex 5050 | Intel Core i5-6500 (4 Cores @ 3.2GHz) | 16GB DDR4 | 256GB SSD + 2x 1TB HDD in mirror |
 | **Network**| TP-Link TL-SG108E (Smart Managed) | - | - | - |
 
 ## ⚙️ Software & Configuration
@@ -178,4 +178,20 @@ Configuration of an external arbiter (**QDevice**) for a two-node cluster to sec
 ### UPDATE 21.08.2026r
 
 * Backup Bandwidth Throttling. Reduced backup bandwidth limit from unlimited to `40 MiB/s`. Nightly backup jobs were generating excessive I/O wait, leading to host instability and subsequent loss of cluster quorum.
+---
+### UPDATE 07.09.2026r
+
+* Update **OPNsense** from `26.7.1_1` to `26.7.3`
+
+---
+### UPDATE 24.09.2026r
+
+dodanie nowego bota oraz utworzenie nowego profilu w hermesie wraz z nową pamięcią 
+
+---
+
+### UPDATE 29.09.2026r
+
+dołączenie plików konfiguracyjnych, automatyzujących i informujących
+
 ---
